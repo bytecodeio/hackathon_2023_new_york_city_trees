@@ -176,6 +176,14 @@ view: new_york_tree_census_2015 {
     sql: ${TABLE}.status ;;
   }
 
+  dimension: status_health {
+    type: string
+    sql:  case when ${status}='Alive' and ${health} is null then 'Unknown'
+          case when ${status}='Alive' then ${health}
+          else ${status}
+          end;;
+  }
+
   dimension: steward {
     type: string
     sql: ${TABLE}.steward ;;
