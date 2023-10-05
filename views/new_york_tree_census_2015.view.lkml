@@ -224,6 +224,7 @@ view: new_york_tree_census_2015 {
   dimension: zip_city {
     type: string
     sql: ${TABLE}.zip_city ;;
+
   }
 
   dimension: zipcode {
