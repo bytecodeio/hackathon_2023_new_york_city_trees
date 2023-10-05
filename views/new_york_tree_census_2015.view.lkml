@@ -106,6 +106,12 @@ view: new_york_tree_census_2015 {
     sql: ${TABLE}.latitude ;;
   }
 
+  dimension: full_lat {
+    type: location
+    sql_latitude: ${latitude}  ;;
+    sql_longitude: ${longitude} ;;
+  }
+
   dimension: longitude {
     type: number
     sql: ${TABLE}.longitude ;;
@@ -174,6 +180,14 @@ view: new_york_tree_census_2015 {
   dimension: status {
     type: string
     sql: ${TABLE}.status ;;
+  }
+
+  dimension: status_health {
+    type: string
+    sql:  case when ${status}='Alive' and ${health} is null then 'Unknown'
+          case when ${status}='Alive' then ${health}
+          else ${status}
+          end;;
   }
 
   dimension: steward {
