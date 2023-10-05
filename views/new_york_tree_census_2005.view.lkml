@@ -20,6 +20,7 @@ view: new_york_tree_census_2005 {
     # This dimension will be called " Line" in Explore.
 
   dimension: _line {
+    primary_key: yes
     type: number
     sql: ${TABLE}._line ;;
   }

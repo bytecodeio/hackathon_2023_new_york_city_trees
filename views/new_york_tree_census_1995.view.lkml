@@ -97,6 +97,7 @@ view: new_york_tree_census_1995 {
 
   dimension: recordid {
     type: number
+    primary_key: yes
     value_format_name: id
     sql: ${TABLE}.recordid ;;
   }

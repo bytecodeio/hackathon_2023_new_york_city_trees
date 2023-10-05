@@ -77,6 +77,7 @@ view: new_york_tree_species {
 
   dimension: species_scientific_name {
     type: string
+    primary_key: yes
     sql: ${TABLE}.species_scientific_name ;;
   }
 
