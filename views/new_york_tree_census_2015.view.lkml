@@ -1,23 +1,25 @@
-# The name of this view in Looker is "New York Tree Census 2015"
 view: new_york_tree_census_2015 {
 
-  sql_table_name: `hackathon-nyctrees-project.google_drive.new_york_tree_census_2015` ;;
 
 
   dimension_group: fivetran_synced {
     type: time
     sql: ${TABLE}._fivetran_synced ;;
-    }
+     }
 
+
+  sql_table_name: `hackathon-nyctrees-project.google_drive.new_york_tree_census_2015` ;;
+
+  dimension: tree_id {
+    type: number
+    primary_key: yes
+    sql: ${TABLE}.tree_id ;;
+  }
 
   dimension: line {
     type: number
     sql: ${TABLE}._line ;;
   }
-
-  # A measure is a field that uses a SQL aggregate function. Here are defined sum and average
-  # measures for this dimension, but you can also add measures of many different aggregates.
-  # Click on the type parameter to see all the options in the Quick Help panel on the right.
 
   measure: total__line {
     type: sum
@@ -187,11 +189,6 @@ view: new_york_tree_census_2015 {
   dimension: tree_dbh {
     type: number
     sql: ${TABLE}.tree_dbh ;;
-  }
-
-  dimension: tree_id {
-    type: number
-    sql: ${TABLE}.tree_id ;;
   }
 
   dimension: trnk_light {
