@@ -124,6 +124,16 @@ view: new_york_tree_census_1995 {
     sql: ${TABLE}.status ;;
   }
 
+  dimension: status_health {
+    type: string
+    sql:  case when ${status}='Excellent' then 'Good'
+          when ${status}='Good' then 'Fair'
+          when ${status}='Fair' then 'Fair'
+          when ${status}='Critical' then 'Poor'
+          else ${status}
+          end;;
+  }
+
   dimension: street {
     type: string
     sql: ${TABLE}.street ;;
