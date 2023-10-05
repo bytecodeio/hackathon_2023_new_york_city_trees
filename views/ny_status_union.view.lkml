@@ -11,7 +11,7 @@
             union all
            select '2005', _line, case when status='Excellent' then 'Good'
           when status='Good' then 'Fair'
-          else status
+          else coalesce(status, 'Unknown')
           end
             from ${new_york_tree_census_2005.SQL_TABLE_NAME}
             union all
@@ -26,6 +26,7 @@
 
     dimension: census_year {
       type: number
+      value_format_name: id
     }
     dimension: recordid {
       type: number
