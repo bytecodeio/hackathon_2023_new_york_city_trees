@@ -2,25 +2,25 @@
     derived_table: {
       sql: select '1995' as census_year, recordid,
               case when status='Excellent' then 'Good'
-                when status='Good' then 'Fair'
-                when status='Fair' then 'Fair'
-                when status='Critical' then 'Poor'
-                else status
-                end
+          when status='Good' then 'Fair'
+          when status='Fair' then 'Fair'
+          when status='Critical' then 'Poor'
+          else status
+          end as status
             from ${new_york_tree_census_1995.SQL_TABLE_NAME}
             union all
            select '2005', _line, case when status='Excellent' then 'Good'
-              when status='Good' then 'Fair'
-              else status
-              end, tree_id,
+          when status='Good' then 'Fair'
+          else status
+          end
             from ${new_york_tree_census_2005.SQL_TABLE_NAME}
             union all
            select '2015',
             tree_id,
-            case when status='Excellent' then 'Good'
-              when status='Good' then 'Fair'
-              else status
-              end
+            case when status='Alive' and health is null then 'Unknown'
+          when status='Alive' then health
+          else status
+          end
             from ${new_york_tree_census_2015.SQL_TABLE_NAME};;
     }
 
@@ -40,6 +40,6 @@
     }
 
     measure: total_count {
-      type: count_distinct
+      type: count
     }
  }
