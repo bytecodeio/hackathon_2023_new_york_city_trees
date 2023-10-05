@@ -1,0 +1,2 @@
+view: census_union {
+  }
