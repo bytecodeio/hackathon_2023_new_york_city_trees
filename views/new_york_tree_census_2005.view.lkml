@@ -184,6 +184,14 @@ view: new_york_tree_census_2005 {
     sql: ${TABLE}.status ;;
   }
 
+  dimension: status_health {
+    type: string
+    sql:  case when ${status}='Excellent' then 'Good'
+          when ${status}='Good' then 'Fair'
+          else ${status}
+          end;;
+  }
+
   dimension: tree_dbh {
     type: number
     sql: ${TABLE}.tree_dbh ;;
