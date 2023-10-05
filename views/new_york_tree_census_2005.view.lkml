@@ -9,6 +9,7 @@ view: new_york_tree_census_2005 {
   }
 
   dimension: line {
+    primary_key: yes
     type: number
     sql: ${TABLE}._line ;;
   }
