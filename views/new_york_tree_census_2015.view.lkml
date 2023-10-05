@@ -185,7 +185,7 @@ view: new_york_tree_census_2015 {
   dimension: status_health {
     type: string
     sql:  case when ${status}='Alive' and ${health} is null then 'Unknown'
-          case when ${status}='Alive' then ${health}
+          when ${status}='Alive' then ${health}
           else ${status}
           end;;
   }
