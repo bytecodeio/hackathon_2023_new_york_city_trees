@@ -106,6 +106,12 @@ view: new_york_tree_census_2015 {
     sql: ${TABLE}.latitude ;;
   }
 
+  dimension: full_lat {
+    type: location
+    sql_latitude: ${latitude}  ;;
+    sql_longitude: ${longitude} ;;
+  }
+
   dimension: longitude {
     type: number
     sql: ${TABLE}.longitude ;;
